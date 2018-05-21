@@ -5,7 +5,7 @@
 #ifndef BULLETOPENGL_OPENGLMOTIONSTATE_H
 #define BULLETOPENGL_OPENGLMOTIONSTATE_H
 
-#pragma managed (push, off)
+#pragma managed (push,off)
 #include <btBulletDynamicsCommon.h>
 #pragma managed (pop)
 

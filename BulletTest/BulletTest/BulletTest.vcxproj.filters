@@ -21,10 +21,16 @@
     <ClCompile Include="BulletOpenGLApplication.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="BasicDemo.cpp">
+    <ClCompile Include="DebugDrawer.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="GameObject.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="SoftBodyDemo.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="glm.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -35,13 +41,19 @@
     <ClInclude Include="FreeGLUTCallbacks.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="BasicDemo.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="OpenGLMotionState.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="DebugDrawer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
     <ClInclude Include="GameObject.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="SoftBodyDemo.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="glm.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

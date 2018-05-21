@@ -4,10 +4,10 @@
 
 #ifndef BULLETOPENGL_GAMEOBJECT_H
 #define BULLETOPENGL_GAMEOBJECT_H
-
-#pragma managed (push, off)
+#pragma managed (push,off)
 #include <btBulletDynamicsCommon.h>
 #pragma managed (pop)
+
 #include "OpenGLMotionState.h"
 
 
@@ -28,6 +28,8 @@ public:
 	}
 
 	btVector3 GetColor() { return m_color; }
+
+	void SetColor(const btVector3 &color) { m_color = color; }
 
 protected:
 	btCollisionShape*  m_pShape;
