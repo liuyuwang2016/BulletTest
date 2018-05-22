@@ -45,37 +45,40 @@ void SoftBodyDemo::ShutdownPhysics() {
 }
 
 void SoftBodyDemo::CreateObjects() {
-	
-	
-
-
-
 
 	// create a ground plane
 	CreateGameObject(new btBoxShape(btVector3(1,50,50)), 0, btVector3(0.2f, 0.6f, 0.6f), btVector3(0.0f, 0.0f, 0.0f));
 	
+	if (targetModel != NULL) {
+		free(targetModel);
+	}
+	//OBJ = glmReadOBJ("box33/456.obj");
+
+	targetModel = glmReadOBJ("src/model/WorkPiece.obj");
+	
+	btRigidBody*  pRigidBody = BulletLoadObj(targetModel, 0, 0, 0, 0.01);
 	// create a soft 'ball' with 128 sides and a radius of 3
 	//btSoftBody*  pSoftBody = btSoftBodyHelpers::CreateEllipsoid(m_softBodyWorldInfo,btVector3(0,0,0),btVector3(3,3,3),111);
-	btSoftBody*  pSoftBody = btSoftBodyHelpers::CreateFromTriMesh(m_softBodyWorldInfo, );
-
+	//btSoftBody*  pSoftBody = btSoftBodyHelpers::CreateFromTriMesh(m_softBodyWorldInfo, );
+	
 	// set the body's position
-	pSoftBody->translate(btVector3(0,15,0));
+	pRigidBody->translate(btVector3(0, 15, 0));
 
-	// set the 'volume conservation coefficient'
-	pSoftBody->m_cfg.kVC = 0.5;
+	//// set the 'volume conservation coefficient'
+	//pRigidBody->m_cfg.kVC = 0.5;
 
-	// set the 'linear stiffness'
-	pSoftBody->m_materials[0]->m_kLST = 0.5;
+	//// set the 'linear stiffness'
+	//pRigidBody->m_materials[0]->m_kLST = 0.5;
 
-	// set the total mass of the soft body
-	pSoftBody->setTotalMass(50);
+	//// set the total mass of the soft body
+	//pRigidBody->setTotalMass(50);
 
-	// tell the soft body to initialize and
-	// attempt to maintain the current pose
-	pSoftBody->setPose(true,false);
+	//// tell the soft body to initialize and
+	//// attempt to maintain the current pose
+	//pRigidBody->setPose(true, false);
 
-	// add the soft body to our world
-	m_pSoftBodyWorld->addSoftBody(pSoftBody);
+	//// add the soft body to our world
+	//m_pSoftBodyWorld->addSoftBody(pRigidBody);
 }
 
 void SoftBodyDemo::RenderScene() {

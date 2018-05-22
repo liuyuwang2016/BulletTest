@@ -1,7 +1,4 @@
 //
-// Created by AICDG on 2017/8/9.
-//
-
 #ifndef BULLETOPENGL_SOFTBODYDEMO_H
 #define BULLETOPENGL_SOFTBODYDEMO_H
 
@@ -13,7 +10,7 @@
 #include <BulletSoftBody/btSoftBodyHelpers.h>
 #pragma managed (pop)
 
-#include "glm.h"
+
 class SoftBodyDemo : public BulletOpenGLApplication {
 public:
 	SoftBodyDemo();
@@ -26,7 +23,7 @@ public:
 protected:
 	// a pointer to our world, typecast into its soft body type
 	btSoftRigidDynamicsWorld*  m_pSoftBodyWorld;
-
+	
 	// the soft body world info. Needed for proper contact generation
 	btSoftBodyWorldInfo  m_softBodyWorldInfo;
 };

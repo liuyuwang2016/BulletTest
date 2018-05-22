@@ -23,7 +23,8 @@
 
 // Our custom debug renderer
 #include "DebugDrawer.h"
-
+//加载obj模型使用的glm库
+#include "glm.h"
 // a convenient typedef to reference an STL vector of GameObjects
 typedef std::vector<GameObject*> GameObjects;
 
@@ -112,6 +113,8 @@ public:
 	virtual void CollisionEvent(btRigidBody* pBody0, btRigidBody * pBody1);
 	virtual void SeparationEvent(btRigidBody * pBody0, btRigidBody * pBody1);
 
+	//直接load obj进Bullet的函数
+	btRigidBody* BulletLoadObj(GLMmodel* mesh, float x, float y, float z, float scale);
 protected:
 	// camera control
 	btVector3 m_cameraPosition; // the camera's current position
@@ -149,6 +152,9 @@ protected:
 
 	// collision event variables
 	CollisionPairs m_pairsLastUpdate;
+
+	// target model loaded by glm
+	GLMmodel* targetModel;
 };
 
 

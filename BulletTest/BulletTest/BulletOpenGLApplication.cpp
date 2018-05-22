@@ -448,7 +448,6 @@ void BulletOpenGLApplication::DrawShape(btScalar* transform, const btCollisionSh
 		float halfHeight = pCylinder->getHalfExtentsWithMargin()[1];
 		// draw the cylinder
 		DrawCylinder(radius,halfHeight);
-
 		break;
 	}
 	case CONVEX_HULL_SHAPE_PROXYTYPE:
@@ -748,29 +747,65 @@ void BulletOpenGLApplication::CheckForCollisionEvents() {
 }
 
 void BulletOpenGLApplication::CollisionEvent(btRigidBody * pBody0, btRigidBody * pBody1) {
-//	// find the two colliding objects
-//	GameObject* pObj0 = FindGameObject(pBody0);
-//	GameObject* pObj1 = FindGameObject(pBody1);
-//
-//	// exit if we didn't find anything
-//	if (!pObj0 || !pObj1) return;
-//
-//	// set their colors to white
-//	pObj0->SetColor(btVector3(1.0,1.0,1.0));
-//	pObj1->SetColor(btVector3(1.0,1.0,1.0));
+	// find the two colliding objects
+	GameObject* pObj0 = FindGameObject(pBody0);
+	GameObject* pObj1 = FindGameObject(pBody1);
+
+	// exit if we didn't find anything
+	if (!pObj0 || !pObj1) return;
+
+	// set their colors to white
+	pObj0->SetColor(btVector3(1.0,1.0,1.0));
+	pObj1->SetColor(btVector3(1.0,1.0,1.0));
 }
 
 void BulletOpenGLApplication::SeparationEvent(btRigidBody * pBody0, btRigidBody * pBody1) {
-//	// get the two separating objects
-//	GameObject* pObj0 = FindGameObject((btRigidBody*)pBody0);
-//	GameObject* pObj1 = FindGameObject((btRigidBody*)pBody1);
-//
-//	// exit if we didn't find anything
-//	if (!pObj0 || !pObj1) return;
-//
-//	// set their colors to black
-//	pObj0->SetColor(btVector3(0.0,0.0,0.0));
-//	pObj1->SetColor(btVector3(0.0,0.0,0.0));
+	// get the two separating objects
+	GameObject* pObj0 = FindGameObject((btRigidBody*)pBody0);
+	GameObject* pObj1 = FindGameObject((btRigidBody*)pBody1);
+
+	// exit if we didn't find anything
+	if (!pObj0 || !pObj1) return;
+
+	// set their colors to black
+	pObj0->SetColor(btVector3(0.0,0.0,0.0));
+	pObj1->SetColor(btVector3(0.0,0.0,0.0));
+}
+
+/*在这里是使用把glm读取obj的方式传送给bullet*/
+btRigidBody* BulletOpenGLApplication::BulletLoadObj(GLMmodel* mesh, float x, float y, float z, float scale)
+{
+	btTriangleMesh* trimesh = new btTriangleMesh();
+	for (int t = 0; t < mesh->numtriangles; ++t)
+	{
+		GLuint index0 = 3 * mesh->triangles[t].vindices[0];
+		GLuint index1 = 3 * mesh->triangles[t].vindices[1];
+		GLuint index2 = 3 * mesh->triangles[t].vindices[2];
+
+		GLfloat* p0 = &mesh->vertices[index0];
+		GLfloat* p1 = &mesh->vertices[index1];
+		GLfloat* p2 = &mesh->vertices[index2];
+
+		btVector3 v0(p0[0], p0[1], p0[2]);
+		btVector3 v1(p1[0], p1[1], p1[2]);
+		btVector3 v2(p2[0], p2[1], p2[2]);
+
+		v0 *= scale;
+		v1 *= scale;
+		v2 *= scale;
+
+		trimesh->addTriangle(v0, v1, v2);
+	}
+	btCollisionShape* shape = 0;
+	bool useQuantization = true;
+	shape = new btBvhTriangleMeshShape(trimesh, useQuantization);
+	btDefaultMotionState *StillStateMOT = new btDefaultMotionState(btTransform(btQuaternion(0, 0, 0, 1), btVector3(x, y, z)));
+	btScalar Mass = 1;
+	btVector3 FallInertia(0, 0, 0);
+	shape->calculateLocalInertia(Mass, FallInertia);
+	btRigidBody::btRigidBodyConstructionInfo StillRigidCI(Mass, StillStateMOT, shape, FallInertia);
+	btRigidBody *Rigid = new btRigidBody(StillRigidCI);
+	return Rigid;
 }
 
 GameObject* BulletOpenGLApplication::FindGameObject(btRigidBody* pBody) {
