@@ -4,10 +4,7 @@
 #include "BulletOpenGLApplication.h"
 
 #pragma managed (push,off)
-//#include <BulletSoftBody/btSoftRigidDynamicsWorld.h>
-//#include <BulletSoftBody/btSoftBodyRigidBodyCollisionConfiguration.h>
-//#include <BulletSoftBody/btSoftBodyHelpers.h>
-
+#include <btBulletDynamicsCommon.h>
 #pragma managed (pop)
 
 
@@ -17,11 +14,11 @@ public:
 
 	virtual void InitializePhysics() override;
 	virtual void ShutdownPhysics() override;
-	virtual void RenderScene() override;
 	void CreateObjects();
-
+	virtual void RenderScene() override;
+	// target model loaded by glm
 protected:
-	
+	GLMmodel* targetModel;
 };
 
 

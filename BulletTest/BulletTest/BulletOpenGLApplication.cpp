@@ -776,7 +776,7 @@ void BulletOpenGLApplication::SeparationEvent(btRigidBody * pBody0, btRigidBody 
 btRigidBody* BulletOpenGLApplication::BulletLoadObj(GLMmodel* mesh, float x, float y, float z, float scale)
 {
 	btTriangleMesh* trimesh = new btTriangleMesh();
-	for (int t = 0; t < mesh->numtriangles; ++t)
+	for (int t = 0; t < mesh->numtriangles; t++)
 	{
 		GLuint index0 = 3 * mesh->triangles[t].vindices[0];
 		GLuint index1 = 3 * mesh->triangles[t].vindices[1];
@@ -798,13 +798,19 @@ btRigidBody* BulletOpenGLApplication::BulletLoadObj(GLMmodel* mesh, float x, flo
 	}
 	btCollisionShape* shape = 0;
 	bool useQuantization = true;
-	shape = new btBvhTriangleMeshShape(trimesh, useQuantization);
-	btDefaultMotionState *StillStateMOT = new btDefaultMotionState(btTransform(btQuaternion(0, 0, 0, 1), btVector3(x, y, z)));
+	shape = new btConvexTriangleMeshShape(trimesh, useQuantization);
+	DrawConvexHull(shape);
+	btTransform trans;
+	trans.setIdentity();
+	trans.setOrigin(btVector3(x, y, z));
+	btDefaultMotionState *StillStateMOT = new btDefaultMotionState(trans);
 	btScalar Mass = 1;
-	btVector3 FallInertia(0, 0, 0);
-	shape->calculateLocalInertia(Mass, FallInertia);
+	btVector3 FallInertia(0.0f, 0.0f, 0.0f);
+	
+	//使用mass, motionstate, shape构建出rigidbody。
 	btRigidBody::btRigidBodyConstructionInfo StillRigidCI(Mass, StillStateMOT, shape, FallInertia);
 	btRigidBody *Rigid = new btRigidBody(StillRigidCI);
+
 	return Rigid;
 }
 

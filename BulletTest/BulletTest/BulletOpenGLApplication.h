@@ -26,6 +26,7 @@
 //加载obj模型使用的glm库
 #include "glm.h"
 // a convenient typedef to reference an STL vector of GameObjects
+// 在GameObject里面定义的，这里是用复数代表多个物体
 typedef std::vector<GameObject*> GameObjects;
 
 // convenient typedefs for collision events
@@ -140,6 +141,7 @@ protected:
 	btClock m_clock;
 
 	// an array of our game objects
+	// game objects的阵列
 	GameObjects m_objects;
 
 	// debug renderer
@@ -153,8 +155,7 @@ protected:
 	// collision event variables
 	CollisionPairs m_pairsLastUpdate;
 
-	// target model loaded by glm
-	GLMmodel* targetModel;
+	
 };
 
 
