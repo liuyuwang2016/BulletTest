@@ -44,7 +44,7 @@ void RigidOBJDemo::CreateObjects()
 	glmVertexNormals(targetModel, 90.0);
 	
 	btRigidBody*  pRigidBody = BulletLoadObj(targetModel, 0, 0, 15, 1);
-	m_objects.push_back(pRigidBody);
+	
 	m_pWorld->addRigidBody(pRigidBody);
 
 }
