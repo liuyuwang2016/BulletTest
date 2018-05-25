@@ -1,7 +1,7 @@
-﻿生成启动时间为 2018/5/23 17:52:58。
+﻿生成启动时间为 2018/5/25 10:55:23。
      1>项目“D:\USER\Desktop\BulletTest\BulletTest\BulletTest\BulletTest.vcxproj”在节点 2 上(Build 个目标)。
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"D:\USER\Desktop\bullet3-master\bullet3-master\src" /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0" /AI"C:\Program Files (x86)\Windows Kits\8.1\References\CommonConfiguration\Neutral" /Zi /clr /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _CRT_SECURE_NO_WARNINGS /D _MBCS /EHa /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /TP /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\mscorlib.dll" /analyze- /errorReport:prompt /clr:nostdlib BulletOpenGLApplication.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"D:\USER\Desktop\bullet3-master\bullet3-master\src" /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0" /AI"C:\Program Files (x86)\Windows Kits\8.1\References\CommonConfiguration\Neutral" /Zi /clr /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _CRT_SECURE_NO_WARNINGS /D _MBCS /EHa /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /TP /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\mscorlib.dll" /analyze- /errorReport:prompt /clr:nostdlib BulletOpenGLApplication.cpp RigidOBJDemo.cpp SoftBodyDemo.cpp
          BulletOpenGLApplication.cpp
      1>d:\user\desktop\bullet3-master\bullet3-master\src\LinearMath/btIDebugDraw.h(169): warning C4305: “参数”: 从“double”到“const btScalar”截断
      1>d:\user\desktop\bullet3-master\bullet3-master\src\LinearMath/btIDebugDraw.h(170): warning C4305: “参数”: 从“double”到“const btScalar”截断
@@ -10,6 +10,29 @@
      1>BulletOpenGLApplication.cpp(154): warning C4244: “初始化”: 从“unsigned __int64”转换到“float”，可能丢失数据
      1>BulletOpenGLApplication.cpp(486): warning C4316: “GameObject”: 在堆上分配的对象可能不是对齐 16
      1>BulletOpenGLApplication.cpp(779): warning C4018: “<”: 有符号/无符号不匹配
+         RigidOBJDemo.cpp
+     1>d:\user\desktop\bullet3-master\bullet3-master\src\LinearMath/btIDebugDraw.h(169): warning C4305: “参数”: 从“double”到“const btScalar”截断
+     1>d:\user\desktop\bullet3-master\bullet3-master\src\LinearMath/btIDebugDraw.h(170): warning C4305: “参数”: 从“double”到“const btScalar”截断
+     1>d:\user\desktop\bullet3-master\bullet3-master\src\LinearMath/btIDebugDraw.h(171): warning C4305: “参数”: 从“double”到“const btScalar”截断
+         SoftBodyDemo.cpp
+     1>d:\user\desktop\bullet3-master\bullet3-master\src\LinearMath/btIDebugDraw.h(169): warning C4305: “参数”: 从“double”到“const btScalar”截断
+     1>d:\user\desktop\bullet3-master\bullet3-master\src\LinearMath/btIDebugDraw.h(170): warning C4305: “参数”: 从“double”到“const btScalar”截断
+     1>d:\user\desktop\bullet3-master\bullet3-master\src\LinearMath/btIDebugDraw.h(171): warning C4305: “参数”: 从“double”到“const btScalar”截断
+         正在生成代码...
+     1>d:\user\desktop\bullettest\bullettest\bullettest\softbodydemo.cpp(9): warning C4793: “SoftBodyDemo::SoftBodyDemo”: 编译为本机的函数:
+         	托管代码中不支持对齐数据类型
+     1>d:\user\desktop\bullettest\bullettest\bullettest\softbodydemo.cpp(9): warning C4793: “SoftBodyDemo::SoftBodyDemo”: 编译为本机的函数:
+         	托管代码中不支持对齐数据类型
+     1>d:\user\desktop\bullettest\bullettest\bullettest\softbodydemo.cpp(50): warning C4793: “SoftBodyDemo::CreateObjects”: 编译为本机的函数:
+         	托管代码中不支持对齐数据类型
+     1>d:\user\desktop\bullettest\bullettest\bullettest\softbodydemo.cpp(61): warning C4793: “SoftBodyDemo::CreateObjects”: 编译为本机的函数:
+         	托管代码中不支持对齐数据类型
+     1>d:\user\desktop\bullettest\bullettest\bullettest\softbodydemo.cpp(64): warning C4793: “SoftBodyDemo::CreateObjects”: 编译为本机的函数:
+         	托管代码中不支持对齐数据类型
+     1>d:\user\desktop\bullettest\bullettest\bullettest\rigidobjdemo.cpp(6): warning C4793: “RigidOBJDemo::RigidOBJDemo”: 编译为本机的函数:
+         	托管代码中不支持对齐数据类型
+     1>d:\user\desktop\bullettest\bullettest\bullettest\rigidobjdemo.cpp(37): warning C4793: “RigidOBJDemo::CreateObjects”: 编译为本机的函数:
+         	托管代码中不支持对齐数据类型
      1>d:\user\desktop\bullettest\bullettest\bullettest\bulletopenglapplication.cpp(204): warning C4793: “BulletOpenGLApplication::Motion”: 编译为本机的函数:
          	托管代码中不支持对齐数据类型
      1>d:\user\desktop\bullettest\bullettest\bullettest\bulletopenglapplication.cpp(205): warning C4793: “BulletOpenGLApplication::Motion”: 编译为本机的函数:
@@ -134,8 +157,6 @@
          	托管代码中不支持对齐数据类型
      1>d:\user\desktop\bullettest\bullettest\bullettest\bulletopenglapplication.cpp(805): warning C4793: “BulletOpenGLApplication::BulletLoadObj”: 编译为本机的函数:
          	托管代码中不支持对齐数据类型
-     1>d:\user\desktop\bullettest\bullettest\bullettest\bulletopenglapplication.cpp(813): warning C4793: “BulletOpenGLApplication::BulletLoadObj”: 编译为本机的函数:
-         	托管代码中不支持对齐数据类型
      1>d:\user\desktop\bullettest\bullettest\bullettest\bulletopenglapplication.cpp(815): warning C4793: “BulletOpenGLApplication::BulletLoadObj”: 编译为本机的函数:
          	托管代码中不支持对齐数据类型
      1>d:\user\desktop\bullettest\bullettest\bullettest\bulletopenglapplication.cpp(389): warning C4793: “BulletOpenGLApplication::RenderScene”: 编译为本机的函数:
@@ -195,4 +216,4 @@
 
 生成成功。
 
-已用时间 00:00:03.05
+已用时间 00:00:12.63
