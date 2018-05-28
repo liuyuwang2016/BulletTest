@@ -49,14 +49,6 @@ void SoftBodyDemo::CreateObjects() {
 	// create a ground plane
 	CreateGameObject(new btBoxShape(btVector3(1,50,50)), 0, btVector3(0.2f, 0.6f, 0.6f), btVector3(0.0f, 0.0f, 0.0f));
 	
-	//if (targetModel != NULL) {
-	//	free(targetModel);
-	//}
-	////OBJ = glmReadOBJ("box33/456.obj");
-
-	//targetModel = glmReadOBJ("src/model/WorkPiece.obj");
-	//
-	//btRigidBody*  pRigidBody = BulletLoadObj(targetModel, 0, 0, 0, 0.01);
 	// create a soft 'ball' with 128 sides and a radius of 3
 	btSoftBody*  pSoftBody = btSoftBodyHelpers::CreateEllipsoid(m_softBodyWorldInfo,btVector3(0,0,0),btVector3(3,3,3),111);
 

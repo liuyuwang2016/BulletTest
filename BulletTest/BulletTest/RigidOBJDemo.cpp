@@ -34,23 +34,15 @@ void RigidOBJDemo::ShutdownPhysics()
 
 void RigidOBJDemo::CreateObjects()
 {
-	CreateGameObject(new btBoxShape(btVector3(1, 50, 50)), 0, btVector3(0.2f, 0.6f, 0.6f), btVector3(0.0f, 0.0f, 0.0f));
 	if (targetModel != NULL) {
 		free(targetModel);
 	}
 	targetModel = glmReadOBJ("src/model/bunny.obj");
-	glmUnitize(targetModel);					//Translate the model to origin and scale to fit in a unit cube.
-	glmFacetNormals(targetModel);				//Generate face normals. 
-	glmVertexNormals(targetModel, 90.0);
-	
 	btRigidBody*  pRigidBody = BulletLoadObj(targetModel, 0, 0, 15, 1);
-	
-	m_pWorld->addRigidBody(pRigidBody);
-
 }
 
 void RigidOBJDemo::RenderScene()
 {
 	BulletOpenGLApplication::RenderScene();
-	
 }
+

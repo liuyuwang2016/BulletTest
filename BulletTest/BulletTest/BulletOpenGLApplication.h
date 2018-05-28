@@ -1,5 +1,5 @@
 //
-// Created by AICDG on 2017/8/9.
+// Created by Yvan Liu on 2018.
 //
 
 #ifndef BULLETOPENGL_BULLETOPENGLAPPLICATION_H
@@ -29,11 +29,11 @@
 // 在GameObject里面定义的，这里是用复数代表多个物体
 typedef std::vector<GameObject*> GameObjects;
 
-// convenient typedefs for collision events
+// convenient typedefs for collision events 检测两个物体的碰撞
 typedef std::pair<const btRigidBody*, const btRigidBody*> CollisionPair;
 typedef std::set<CollisionPair> CollisionPairs;
 
-// struct to store our raycasting results
+// 存储光线追踪结果的结构体
 struct RayResult {
 	btRigidBody* pBody;
 	btVector3 hitPoint;
@@ -53,7 +53,7 @@ public:
 	BulletOpenGLApplication();
 	~BulletOpenGLApplication();
 	void Initialize();
-	// FreeGLUT callbacks //
+	// FreeGLUT 回调函数 //
 	virtual void Keyboard(unsigned char key, int x, int y);
 	virtual void KeyboardUp(unsigned char key, int x, int y);
 	virtual void Special(int key, int x, int y);
@@ -65,29 +65,29 @@ public:
 	virtual void Motion(int x, int y);
 	virtual void Display();
 
-	// rendering. Can be overrideen by derived classes
+	// 渲染，可以被派生类重载
 	virtual void RenderScene();
 
-	// scene updating. Can be overridden by derived classes
+	// 场景更新，可以被派生类重载
 	virtual void UpdateScene(float dt);
 
-	// physics functions. Can be overriden by derived classes (like BasicDemo)
+	// 物理性质方程式，可以被派生类重载，比如BasicDemo
 	virtual void InitializePhysics() {};
 	virtual void ShutdownPhysics() {};
 	
-	// camera functions
+	// 相机的函数
 	void UpdateCamera();
 	void RotateCamera(float &angle, float value);
 	void ZoomCamera(float distance);
 
-	// drawing functions
+	// 画出来的函数
 	void DrawBox(const btVector3 &halfSize);
 	void DrawSphere(const btScalar &radius);
 	void DrawCylinder(const btScalar &radius, const btScalar &halfHeight);
 	void DrawConvexHull(const btCollisionShape* shape);
 	void DrawShape(btScalar* transform, const btCollisionShape* pShape, const btVector3 &color);
 
-	// object functions
+	// 虚拟物体的函数
 	GameObject* CreateGameObject(btCollisionShape* pShape,
 			const float &mass,
 			const btVector3 &color = btVector3(1.0f,1.0f,1.0f),
@@ -100,16 +100,16 @@ public:
 	void DestroyGameObject(btRigidBody* pBody);
 	GameObject* FindGameObject(btRigidBody* pBody);
 
-	// picking functions
+	// 光线追踪选择函数
 	btVector3 GetPickingRay(int x, int y);
 	bool Raycast(const btVector3 &startPosition, const btVector3 &direction, RayResult &output, bool includeStatic = false);
 
-	// constraint functions
+	// 约束的函数
 	void CreatePickingConstraint(int x, int y);
 	void RemovePickingConstraint();
 
 
-	// collision event functions
+	// 碰撞事件函数
 	void CheckForCollisionEvents();
 	virtual void CollisionEvent(btRigidBody* pBody0, btRigidBody * pBody1);
 	virtual void SeparationEvent(btRigidBody * pBody0, btRigidBody * pBody1);
@@ -117,7 +117,7 @@ public:
 	//直接load obj进Bullet的函数
 	btRigidBody* BulletLoadObj(GLMmodel* mesh, float x, float y, float z, float scale);
 protected:
-	// camera control
+	// 相机控制参数
 	btVector3 m_cameraPosition; // the camera's current position
 	btVector3 m_cameraTarget;	 // the camera's lookAt target
 	float m_nearPlane; // minimum distance the camera will render
@@ -130,21 +130,20 @@ protected:
 	int m_screenWidth;
 	int m_screenHeight;
 
-	// core Bullet components
+	// 核心的Bullet的组件
 	btBroadphaseInterface* m_pBroadphase;
 	btCollisionConfiguration* m_pCollisionConfiguration;
 	btCollisionDispatcher* m_pDispatcher;
 	btConstraintSolver* m_pSolver;
 	btDynamicsWorld* m_pWorld;
 
-	// a simple clock for counting time
+	// 计算时间的简单clock
 	btClock m_clock;
 
-	// an array of our game objects
-	// game objects的阵列
+	// game objects的数组
 	GameObjects m_objects;
 
-	// debug renderer
+	// Debug模式的渲染
 	DebugDrawer* m_pDebugDrawer;
 
 	// constraint variables
@@ -155,7 +154,6 @@ protected:
 	// collision event variables
 	CollisionPairs m_pairsLastUpdate;
 
-	
 };
 
 

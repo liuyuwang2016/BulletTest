@@ -799,7 +799,7 @@ btRigidBody* BulletOpenGLApplication::BulletLoadObj(GLMmodel* mesh, float x, flo
 	btCollisionShape* shape = 0;
 	bool useQuantization = true;
 	shape = new btConvexTriangleMeshShape(trimesh, useQuantization);
-	DrawConvexHull(shape);
+	
 	btTransform trans;
 	trans.setIdentity();
 	trans.setOrigin(btVector3(x, y, z));
