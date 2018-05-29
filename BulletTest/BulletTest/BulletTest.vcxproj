@@ -87,7 +87,6 @@
     <ClCompile Include="glm.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="RigidOBJDemo.cpp" />
-    <ClCompile Include="SoftBodyDemo.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Bullet3\src\BulletCollision\BulletCollision.vcxproj">
@@ -108,7 +107,6 @@
     <ClInclude Include="glm.h" />
     <ClInclude Include="OpenGLMotionState.h" />
     <ClInclude Include="RigidOBJDemo.h" />
-    <ClInclude Include="SoftBodyDemo.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

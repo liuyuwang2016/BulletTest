@@ -67,7 +67,7 @@ void BulletOpenGLApplication::Initialize() {
 	glDepthFunc(GL_LESS);
 
 	// set the backbuffer clearing color to a lightish blue
-	glClearColor(0.6, 0.65, 0.85, 0);
+	glClearColor(0.6, 0.6, 0.85, 0);
 
 	// initialize the physics system
 	InitializePhysics();
@@ -169,7 +169,7 @@ void BulletOpenGLApplication::Idle() {
 
 void BulletOpenGLApplication::Mouse(int button, int state, int x, int y) {
 	switch(button) {
-	case 0:  // left mouse button
+	case 0:  // 鼠标左键
 		{
 			if (state == 0) { // button down
 				// create the picking constraint when we click the LMB
@@ -180,7 +180,7 @@ void BulletOpenGLApplication::Mouse(int button, int state, int x, int y) {
 			}
 			break;
 		}
-	case 2: // right mouse button
+	case 2: // 鼠标右键
 		{
 			if (state == 0) { // pressed down
 				// shoot a box
@@ -772,47 +772,6 @@ void BulletOpenGLApplication::SeparationEvent(btRigidBody * pBody0, btRigidBody 
 	pObj1->SetColor(btVector3(0.0,0.0,0.0));
 }
 
-/*在这里是使用把glm读取obj的方式传送给bullet*/
-btRigidBody* BulletOpenGLApplication::BulletLoadObj(GLMmodel* mesh, float x, float y, float z, float scale)
-{
-	btTriangleMesh* trimesh = new btTriangleMesh();
-	for (int t = 0; t < mesh->numtriangles; t++)
-	{
-		GLuint index0 = 3 * mesh->triangles[t].vindices[0];
-		GLuint index1 = 3 * mesh->triangles[t].vindices[1];
-		GLuint index2 = 3 * mesh->triangles[t].vindices[2];
-
-		GLfloat* p0 = &mesh->vertices[index0];
-		GLfloat* p1 = &mesh->vertices[index1];
-		GLfloat* p2 = &mesh->vertices[index2];
-
-		btVector3 v0(p0[0], p0[1], p0[2]);
-		btVector3 v1(p1[0], p1[1], p1[2]);
-		btVector3 v2(p2[0], p2[1], p2[2]);
-
-		v0 *= scale;
-		v1 *= scale;
-		v2 *= scale;
-
-		trimesh->addTriangle(v0, v1, v2);
-	}
-	btCollisionShape* shape = 0;
-	bool useQuantization = true;
-	shape = new btConvexTriangleMeshShape(trimesh, useQuantization);
-	
-	btTransform trans;
-	trans.setIdentity();
-	trans.setOrigin(btVector3(x, y, z));
-	btDefaultMotionState *StillStateMOT = new btDefaultMotionState(trans);
-	btScalar Mass = 1;
-	btVector3 FallInertia(0.0f, 0.0f, 0.0f);
-	
-	//使用mass, motionstate, shape构建出rigidbody。
-	btRigidBody::btRigidBodyConstructionInfo StillRigidCI(Mass, StillStateMOT, shape, FallInertia);
-	btRigidBody *Rigid = new btRigidBody(StillRigidCI);
-
-	return Rigid;
-}
 
 GameObject* BulletOpenGLApplication::FindGameObject(btRigidBody* pBody) {
 	// search through our list of gameobjects finding

@@ -87,7 +87,7 @@ public:
 	void DrawConvexHull(const btCollisionShape* shape);
 	void DrawShape(btScalar* transform, const btCollisionShape* pShape, const btVector3 &color);
 
-	// 虚拟物体的函数
+	// 普通虚拟物体的函数
 	GameObject* CreateGameObject(btCollisionShape* pShape,
 			const float &mass,
 			const btVector3 &color = btVector3(1.0f,1.0f,1.0f),
@@ -95,6 +95,7 @@ public:
 			short int group = -1,
 			short int mask = -1,
 			const btQuaternion &initialRotation = btQuaternion(0,0,1,1));
+	//Obj虚拟物体的函数
 
 	void ShootBox(const btVector3 &direction);
 	void DestroyGameObject(btRigidBody* pBody);
@@ -114,8 +115,7 @@ public:
 	virtual void CollisionEvent(btRigidBody* pBody0, btRigidBody * pBody1);
 	virtual void SeparationEvent(btRigidBody * pBody0, btRigidBody * pBody1);
 
-	//直接load obj进Bullet的函数
-	btRigidBody* BulletLoadObj(GLMmodel* mesh, float x, float y, float z, float scale);
+	
 protected:
 	// 相机控制参数
 	btVector3 m_cameraPosition; // the camera's current position
