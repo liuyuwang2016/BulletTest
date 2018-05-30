@@ -9,12 +9,7 @@
 #pragma managed (push,off)
 #include <BulletDynamics/Dynamics/btDynamicsWorld.h>
 #pragma managed (pop)
-// include our custom Motion State object
-#include "OpenGLMotionState.h"
-#include "GameObject.h"
-#include <vector>
-// a convenient typedef to reference an STL vector of GameObjects
-typedef std::vector<GameObject*> GameObjects;
+
 
 class BulletOpenGLApplication {
 public:
@@ -33,12 +28,6 @@ public:
 	virtual void Motion(int x, int y);
 	virtual void Display();
 
-	// rendering. Can be overrideen by derived classes
-	virtual void RenderScene();
-
-	// scene updating. Can be overridden by derived classes
-	virtual void UpdateScene(float dt);
-
 	// physics functions. Can be overriden by derived classes (like BasicDemo)
 	virtual void InitializePhysics() {};
 	virtual void ShutdownPhysics() {};
@@ -49,21 +38,7 @@ public:
 	void ZoomCamera(float distance);
 
 	// drawing functions
-	void DrawBox(const btVector3 &halfSize);
-	void DrawShape(btScalar* transform, const btCollisionShape* pShape, const btVector3 &color);
-
-	// 普通的物体的生成方式object functions
-	GameObject* CreateGameObject(btCollisionShape* pShape,
-		const float &mass,
-		const btVector3 &color = btVector3(1.0f, 1.0f, 1.0f),
-		const btVector3 &initialPosition = btVector3(0.0f, 0.0f, 0.0f),
-		const btQuaternion &initialRotation = btQuaternion(0, 0, 1, 1));
-	//obj物体的生成方式 obj object functions
-	GameObject* CreateObjGameObject(btCollisionShape* pShape,
-		const float &mass,
-		const btVector3 &color = btVector3(1.0f, 1.0f, 1.0f),
-		const btVector3 &initialPosition = btVector3(0.0f, 0.0f, 0.0f),
-		const btQuaternion &initialRotation = btQuaternion(0, 0, 1, 1));
+	void DrawBox(const btVector3 &halfSize, const btVector3 &color = btVector3(1.0f, 1.0f, 1.0f));
 protected:
 	// camera control
 	btVector3 m_cameraPosition; // the camera's current position
@@ -84,14 +59,6 @@ protected:
 	btCollisionDispatcher* m_pDispatcher;
 	btConstraintSolver* m_pSolver;
 	btDynamicsWorld* m_pWorld;
-
-	// our custom motion state
-	OpenGLMotionState* m_pMotionState;
-
-	// a simple clock for counting time
-	btClock m_clock;
-	// an array of our game objects
-	GameObjects m_objects;
 };
 
 

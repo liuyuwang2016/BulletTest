@@ -18,7 +18,7 @@ public:
 	virtual void RenderScene() override;
 	// target model loaded by glm
 	//直接load obj进Bullet的函数
-	btRigidBody* BulletLoadObj(GLMmodel* mesh, float x, float y, float z, float scale);
+	
 protected:
 	GLMmodel* targetModel;
 };

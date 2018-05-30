@@ -13,6 +13,18 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Model Reader">
+      <UniqueIdentifier>{527d919f-582b-4833-bbc4-76d24f728ec6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="点胶机">
+      <UniqueIdentifier>{d9b6a682-df88-41c8-b91e-b2c7847202fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Kinect">
+      <UniqueIdentifier>{b2f9a362-55d7-48e0-b6bc-739a18db01a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PortAudio">
+      <UniqueIdentifier>{d2294d02-e72b-4c98-9d4c-8360eda79a5c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -27,10 +39,13 @@
     <ClCompile Include="GameObject.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="glm.cpp">
+    <ClCompile Include="RigidOBJDemo.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="RigidOBJDemo.cpp">
+    <ClCompile Include="glm.cpp">
+      <Filter>Model Reader</Filter>
+    </ClCompile>
+    <ClCompile Include="SoftBodyDemo.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -50,10 +65,13 @@
     <ClInclude Include="GameObject.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="glm.h">
+    <ClInclude Include="RigidOBJDemo.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="RigidOBJDemo.h">
+    <ClInclude Include="glm.h">
+      <Filter>Model Reader</Filter>
+    </ClInclude>
+    <ClInclude Include="SoftBodyDemo.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

@@ -9,11 +9,13 @@
 #pragma managed (pop)
 
 #include "OpenGLMotionState.h"
-
+#include "glm.h"
 
 class GameObject {
 public:
 	GameObject(btCollisionShape* pShape, float mass, const btVector3 &color, const btVector3 &initialPosition = btVector3(0,0,0), const btQuaternion &initialRotation = btQuaternion(0,0,1,1));
+	GameObject(GLMmodel* mesh, float scale, btCollisionShape* pShape, float mass, const btVector3 &color, const btVector3 &initialPosition = btVector3(0, 0, 0), const btQuaternion &initialRotation = btQuaternion(0, 0, 1, 1));
+
 	~GameObject();
 
 	// accessors

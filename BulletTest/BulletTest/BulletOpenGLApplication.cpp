@@ -472,6 +472,10 @@ void BulletOpenGLApplication::DrawShape(btScalar* transform, const btCollisionSh
 		}
 		break;
 	}
+	case TRIANGLE_MESH_SHAPE_PROXYTYPE:
+	{
+		break;
+	}
 	default:
 		// unsupported type
 		break;
@@ -484,6 +488,25 @@ void BulletOpenGLApplication::DrawShape(btScalar* transform, const btCollisionSh
 GameObject* BulletOpenGLApplication::CreateGameObject(btCollisionShape* pShape, const float &mass, const btVector3 &color, const btVector3 &initialPosition, short group, short mask, const btQuaternion &initialRotation) {
 	// create a new game object
 	GameObject* pObject = new GameObject(pShape, mass, color, initialPosition, initialRotation);
+
+	// push it to the back of the list
+	m_objects.push_back(pObject);
+
+	// check if the world object is valid
+	if (m_pWorld) {
+		// add the object's rigid body to the world
+		m_pWorld->addRigidBody(pObject->GetRigidBody(), group, mask);
+	}
+	return pObject;
+}
+
+GameObject* BulletOpenGLApplication::CreateObjGameObject(GLMmodel* mesh, float scale, btCollisionShape* pShape, const float &mass, const btVector3 &color /*= btVector3(1.0f, 1.0f, 1.0f)*/, const btVector3 &initialPosition /*= btVector3(0.0f, 0.0f, 0.0f)*/, short int group /*= -1*/, short int mask /*= -1*/, const btQuaternion &initialRotation /*= btQuaternion(0, 0, 1, 1)*/)
+{
+	if (mesh != NULL) {
+		free(mesh);
+	}
+	
+	GameObject* pObject = new GameObject(mesh, scale, pShape, mass, color, initialPosition, initialRotation);
 
 	// push it to the back of the list
 	m_objects.push_back(pObject);

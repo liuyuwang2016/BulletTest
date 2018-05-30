@@ -3,7 +3,6 @@
 //
 
 #include "BulletOpenGLApplication.h"
-#include <iostream>
 
 // Some constants for 3D math and the camera speed
 #define RADIANS_PER_DEGREE 0.01745329f
@@ -123,18 +122,12 @@ void BulletOpenGLApplication::Idle() {
 	// clear the backbuffer
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	// get the time since the last iteration
-	float dt = m_clock.getTimeMilliseconds();
-	// reset the clock to 0
-	m_clock.reset();
-	// update the scene (convert ms to s)
-	UpdateScene(dt / 1000.0f);
-
 	// update the camera
 	UpdateCamera();
 
-	// render the scene
-	RenderScene();
+	// draw a simple box of size 1
+	// also draw it red
+	DrawBox(btVector3(1, 1, 1), btVector3(1.0f, 0.2f, 0.2f));
 	
 	// swap the front and back buffers
 	glutSwapBuffers();
@@ -214,13 +207,13 @@ void BulletOpenGLApplication::UpdateCamera() {
 	// the view matrix is now set
 }
 
-void BulletOpenGLApplication::DrawBox(const btVector3 &halfSize) {
-	// push the transform onto the stack
-	
+void BulletOpenGLApplication::DrawBox(const btVector3 &halfSize, const btVector3 &color) {
 	float halfWidth = halfSize.x();
 	float halfHeight = halfSize.y();
 	float halfDepth = halfSize.z();
 
+	// set the object's color
+	glColor3f(color.x(), color.y(), color.z());
 
 	// create the vertex positions
 	btVector3 vertices[8]={
@@ -303,81 +296,4 @@ void BulletOpenGLApplication::ZoomCamera(float distance) {
 	if (m_cameraDistance < 0.1f) m_cameraDistance = 0.1f;
 	// update the camera since we changed the zoom distance
 	UpdateCamera();
-}
-
-void BulletOpenGLApplication::RenderScene() {
-	// create an array of 16 floats (representing a 4x4 matrix)
-	btScalar transform[16];
-	// iterate through all of the objects in our world
-	for (GameObjects::iterator i = m_objects.begin(); i != m_objects.end(); ++i) {
-		// get the object from the iterator
-		GameObject* pObj = *i;
-
-		// read the transform
-		pObj->GetTransform(transform);
-
-		// get data from the object and draw it
-		DrawShape(transform, pObj->GetShape(), pObj->GetColor());
-	}
-}
-
-void BulletOpenGLApplication::UpdateScene(float dt) {
-	// check if the world object exists
-	if (m_pWorld) {
-		// step the simulation through time. This is called
-		// every update and the amount of elasped time was 
-		// determined back in ::Idle() by our clock object.
-		m_pWorld->stepSimulation(dt);
-	}
-}
-
-void BulletOpenGLApplication::DrawShape(btScalar* transform, const btCollisionShape* pShape, const btVector3 &color) {
-	// set the color
-	glColor3f(color.x(), color.y(), color.z());
-
-	// push the matrix stack
-	glPushMatrix();
-	glMultMatrixf(transform);
-
-	// make a different draw call based on the object type
-	switch (pShape->getShapeType()) {
-		// an internal enum used by Bullet for boxes
-	case BOX_SHAPE_PROXYTYPE:
-	{
-		// assume the shape is a box, and typecast it
-		const btBoxShape* box = static_cast<const btBoxShape*>(pShape);
-		// get the 'halfSize' of the box
-		btVector3 halfSize = box->getHalfExtentsWithMargin();
-		// draw the box
-		DrawBox(halfSize);
-		break;
-	}
-	default:
-		// unsupported type
-		break;
-	}
-
-	// pop the stack
-	glPopMatrix();
-}
-//
-GameObject* BulletOpenGLApplication::CreateGameObject(btCollisionShape* pShape, const float &mass, const btVector3 &color /*= btVector3(1.0f, 1.0f, 1.0f)*/, const btVector3 &initialPosition /*= btVector3(0.0f, 0.0f, 0.0f)*/, const btQuaternion &initialRotation /*= btQuaternion(0, 0, 1, 1)*/)
-{
-	// create a new game object
-	GameObject* pObject = new GameObject(pShape, mass, color, initialPosition, initialRotation);
-
-	// push it to the back of the list
-	m_objects.push_back(pObject);
-
-	// check if the world object is valid
-	if (m_pWorld) {
-		// add the object's rigid body to the world
-		m_pWorld->addRigidBody(pObject->GetRigidBody());
-	}
-	return pObject;
-}
-
-GameObject* BulletOpenGLApplication::CreateObjGameObject(btCollisionShape* pShape, const float &mass, const btVector3 &color /*= btVector3(1.0f, 1.0f, 1.0f)*/, const btVector3 &initialPosition /*= btVector3(0.0f, 0.0f, 0.0f)*/, const btQuaternion &initialRotation /*= btQuaternion(0, 0, 1, 1)*/)
-{
-
 }

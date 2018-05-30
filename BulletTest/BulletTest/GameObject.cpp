@@ -1,7 +1,7 @@
 #include "GameObject.h"
 
 GameObject::GameObject(btCollisionShape* pShape, float mass, const btVector3 &color, const btVector3 &initialPosition, const btQuaternion &initialRotation) {
-	// store the shape for later usage
+	// 存储shape之后使用
 	m_pShape = pShape;
 
 	// store the color
@@ -33,6 +33,50 @@ GameObject::GameObject(btCollisionShape* pShape, float mass, const btVector3 &co
 
 	// create the rigid body
 	m_pBody = new btRigidBody(cInfo);
+}
+
+
+GameObject::GameObject(GLMmodel* mesh, float scale, btCollisionShape* pShape, float mass, const btVector3 &color, const btVector3 &initialPosition /*= btVector3(0, 0, 0)*/, const btQuaternion &initialRotation /*= btQuaternion(0, 0, 1, 1)*/)
+{
+	btTriangleMesh* trimesh = new btTriangleMesh();
+	for (int t = 0; t < mesh->numtriangles; t++)
+	{
+		GLuint index0 = 3 * mesh->triangles[t].vindices[0];
+		GLuint index1 = 3 * mesh->triangles[t].vindices[1];
+		GLuint index2 = 3 * mesh->triangles[t].vindices[2];
+
+		GLfloat* p0 = &mesh->vertices[index0];
+		GLfloat* p1 = &mesh->vertices[index1];
+		GLfloat* p2 = &mesh->vertices[index2];
+
+		btVector3 v0(p0[0], p0[1], p0[2]);
+		btVector3 v1(p1[0], p1[1], p1[2]);
+		btVector3 v2(p2[0], p2[1], p2[2]);
+
+		v0 *= scale;
+		v1 *= scale;
+		v2 *= scale;
+
+		trimesh->addTriangle(v0, v1, v2);
+	}
+	btCollisionShape* shape = 0;
+	bool useQuantization = true;
+	shape = new btConvexTriangleMeshShape(trimesh, useQuantization);
+	m_pShape = shape;
+	m_color = color;
+	btTransform trans;
+	trans.setIdentity();
+	trans.setOrigin(initialPosition);
+	trans.setRotation(initialRotation);
+	btDefaultMotionState *StillStateMOT = new btDefaultMotionState(trans);
+	
+	btVector3 FallInertia(0.0f, 0.0f, 0.0f);
+	if (mass != 0.0f) {
+		pShape->calculateLocalInertia(mass, FallInertia);
+	}
+	//使用mass, motionstate, shape构建出rigidbody。
+	btRigidBody::btRigidBodyConstructionInfo StillRigidCI(mass, StillStateMOT, shape, FallInertia);
+	m_pBody = new btRigidBody(StillRigidCI);
 }
 
 GameObject::~GameObject() {

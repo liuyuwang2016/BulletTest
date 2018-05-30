@@ -23,8 +23,6 @@
 
 // Our custom debug renderer
 #include "DebugDrawer.h"
-//加载obj模型使用的glm库
-#include "glm.h"
 // a convenient typedef to reference an STL vector of GameObjects
 // 在GameObject里面定义的，这里是用复数代表多个物体
 typedef std::vector<GameObject*> GameObjects;
@@ -96,7 +94,13 @@ public:
 			short int mask = -1,
 			const btQuaternion &initialRotation = btQuaternion(0,0,1,1));
 	//Obj虚拟物体的函数
-
+	GameObject* CreateObjGameObject(GLMmodel* mesh, float scale, btCollisionShape* pShape,
+		const float &mass,
+		const btVector3 &color = btVector3(1.0f, 1.0f, 1.0f),
+		const btVector3 &initialPosition = btVector3(0.0f, 0.0f, 0.0f),
+		short int group = -1,
+		short int mask = -1,
+		const btQuaternion &initialRotation = btQuaternion(0, 0, 1, 1));
 	void ShootBox(const btVector3 &direction);
 	void DestroyGameObject(btRigidBody* pBody);
 	GameObject* FindGameObject(btRigidBody* pBody);
