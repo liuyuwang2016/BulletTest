@@ -7,6 +7,7 @@
 #include "FreeGLUTCallbacks.h"
 
 int main(int argc, char** argv) {
+	
 	SoftBodyDemo demo;
-    return glutmain(argc, argv, 800, 600, "5-Axes Dispenser Bullet", &demo);
+    return glutmain(argc, argv, 1920, 1080, "5-Axes Dispenser Bullet", &demo);
 }

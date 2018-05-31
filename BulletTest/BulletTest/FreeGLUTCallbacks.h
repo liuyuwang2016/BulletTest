@@ -55,6 +55,8 @@ int glutmain(int argc, char **argv, int width, int height, const char* title, Bu
 	glutInitWindowPosition(0, 0);
 	glutInitWindowSize(width, height);
 	glutCreateWindow(title);
+	glEnable(GL_DEPTH_TEST);
+	glDisable(GL_LIGHTING);
 	glutSetOption (GLUT_ACTION_ON_WINDOW_CLOSE, GLUT_ACTION_GLUTMAINLOOP_RETURNS);
 
 	// perform custom initialization our of application

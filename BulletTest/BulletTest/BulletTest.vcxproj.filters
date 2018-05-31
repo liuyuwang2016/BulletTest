@@ -48,6 +48,9 @@
     <ClCompile Include="SoftBodyDemo.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="KinectFunction.cpp">
+      <Filter>Kinect</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BulletOpenGLApplication.h">
@@ -73,6 +76,9 @@
     </ClInclude>
     <ClInclude Include="SoftBodyDemo.h">
       <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="KinectFunction.h">
+      <Filter>Kinect</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

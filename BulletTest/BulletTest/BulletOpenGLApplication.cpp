@@ -5,6 +5,7 @@
 #include "BulletOpenGLApplication.h"
 #include <iostream>
 
+
 // Some constants for 3D math and the camera speed
 #define RADIANS_PER_DEGREE 0.01745329f
 #define CAMERA_STEP_SIZE 5.0f
@@ -132,7 +133,7 @@ void BulletOpenGLApplication::SpecialUp(int key, int x, int y) {}
 void BulletOpenGLApplication::Reshape(int w, int h) {
     // this function is called once during application intialization
 	// and again every time we resize the window
-
+	
 	// grab the screen width/height
 	m_screenWidth = w;
 	m_screenHeight = h;
@@ -146,7 +147,6 @@ void BulletOpenGLApplication::Idle() {
 	// this function is called frequently, whenever FreeGlut
 	// isn't busy processing its own events. It should be used
 	// to perform any updating and rendering tasks
-
 	// clear the backbuffer
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -213,7 +213,8 @@ void BulletOpenGLApplication::Motion(int x, int y) {
 	}
 }
 
-void BulletOpenGLApplication::Display() {}
+void BulletOpenGLApplication::Display()
+{}
 
 void BulletOpenGLApplication::UpdateCamera() {
 	// exit in erroneous situations

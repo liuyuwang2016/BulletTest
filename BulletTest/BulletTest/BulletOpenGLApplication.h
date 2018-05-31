@@ -1,11 +1,12 @@
 //
 // Created by Yvan Liu on 2018.
 //
-
+  
 #ifndef BULLETOPENGL_BULLETOPENGLAPPLICATION_H
 #define BULLETOPENGL_BULLETOPENGLAPPLICATION_H
 
 #include <GL/freeglut.h>
+
 #pragma managed (push,off)
 #include <BulletDynamics/Dynamics/btDynamicsWorld.h>
 // includes for convex hulls
@@ -17,10 +18,12 @@
 
 #include "GameObject.h"
 #include <vector>
+#include <array>
 #include <set>
 #include <iterator>
 #include <algorithm>
 
+#include "KinectFunction.h"
 // Our custom debug renderer
 #include "DebugDrawer.h"
 // a convenient typedef to reference an STL vector of GameObjects

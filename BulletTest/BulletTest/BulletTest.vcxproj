@@ -59,7 +59,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>D:\USER\Desktop\Bullet3\lib\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>D:\USER\Desktop\Bullet3\lib\Debug;$(KINECTSDK20_DIR)\Lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>BulletSoftBody_Debug.lib;kinect20.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -85,6 +85,7 @@
     <ClCompile Include="DebugDrawer.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="glm.cpp" />
+    <ClCompile Include="KinectFunction.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="RigidOBJDemo.cpp" />
     <ClCompile Include="SoftBodyDemo.cpp" />
@@ -106,6 +107,7 @@
     <ClInclude Include="FreeGLUTCallbacks.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="glm.h" />
+    <ClInclude Include="KinectFunction.h" />
     <ClInclude Include="OpenGLMotionState.h" />
     <ClInclude Include="RigidOBJDemo.h" />
     <ClInclude Include="SoftBodyDemo.h" />
