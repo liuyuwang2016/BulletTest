@@ -5,14 +5,37 @@
 #ifndef BULLETOPENGL_BULLETOPENGLAPPLICATION_H
 #define BULLETOPENGL_BULLETOPENGLAPPLICATION_H
 
+
 #include <GL/freeglut.h>
+
 #pragma managed (push,off)
 #include <BulletDynamics/Dynamics/btDynamicsWorld.h>
 #pragma managed (pop)
 
-
 // include our custom Motion State object
 #include "OpenGLMotionState.h"
+
+#include "GameObject.h"
+#include <vector>
+#include <set>
+#include <iterator>
+#include <algorithm>
+
+// Our custom debug renderer
+#include "DebugDrawer.h"
+
+// a convenient typedef to reference an STL vector of GameObjects
+typedef std::vector<GameObject*> GameObjects;
+
+// convenient typedefs for collision events
+typedef std::pair<const btRigidBody*, const btRigidBody*> CollisionPair;
+typedef std::set<CollisionPair> CollisionPairs;
+
+// struct to store our raycasting results
+struct RayResult {
+	btRigidBody* pBody;
+	btVector3 hitPoint;
+};
 
 class BulletOpenGLApplication {
 public:
@@ -47,7 +70,34 @@ public:
 	void ZoomCamera(float distance);
 
 	// drawing functions
-	void DrawBox(btScalar* transform, const btVector3 &halfSize, const btVector3 &color = btVector3(1.0f, 1.0f, 1.0f));
+	void DrawBox(const btVector3 &halfSize);
+	void DrawShape(btScalar* transform, const btCollisionShape* pShape, const btVector3 &color);
+
+	// object functions
+	GameObject* CreateGameObject(btCollisionShape* pShape,
+			const float &mass,
+			const btVector3 &color = btVector3(1.0f,1.0f,1.0f),
+			const btVector3 &initialPosition = btVector3(0.0f,0.0f,0.0f),
+			const btQuaternion &initialRotation = btQuaternion(0,0,1,1));
+
+	void ShootBox(const btVector3 &direction);
+	void DestroyGameObject(btRigidBody* pBody);
+	GameObject* FindGameObject(btRigidBody* pBody);
+
+	// picking functions
+	btVector3 GetPickingRay(int x, int y);
+	bool Raycast(const btVector3 &startPosition, const btVector3 &direction, RayResult &output);
+
+	// constraint functions
+	void CreatePickingConstraint(int x, int y);
+	void RemovePickingConstraint();
+
+
+	// collision event functions
+	void CheckForCollisionEvents();
+	virtual void CollisionEvent(btRigidBody* pBody0, btRigidBody * pBody1);
+	virtual void SeparationEvent(btRigidBody * pBody0, btRigidBody * pBody1);
+
 protected:
 	// camera control
 	btVector3 m_cameraPosition; // the camera's current position
@@ -69,11 +119,22 @@ protected:
 	btConstraintSolver* m_pSolver;
 	btDynamicsWorld* m_pWorld;
 
-	// our custom motion state
-	OpenGLMotionState* m_pMotionState;
-
 	// a simple clock for counting time
 	btClock m_clock;
+
+	// an array of our game objects
+	GameObjects m_objects;
+
+	// debug renderer
+	DebugDrawer* m_pDebugDrawer;
+
+	// constraint variables
+	btRigidBody* m_pPickedBody;				// the body we picked up
+	btTypedConstraint*  m_pPickConstraint;	// the constraint the body is attached to
+	btScalar m_oldPickingDist;				// the distance from the camera to the hit point (so we can move the object up, down, left and right from our view)
+
+	// collision event variables
+	CollisionPairs m_pairsLastUpdate;
 };
 
 

@@ -5,9 +5,8 @@
 #ifndef BULLETOPENGL_OPENGLMOTIONSTATE_H
 #define BULLETOPENGL_OPENGLMOTIONSTATE_H
 #pragma managed (push,off)
-#include <btBulletCollisionCommon.h>
+#include <btBulletDynamicsCommon.h>
 #pragma managed (pop)
-
 
 class OpenGLMotionState : public btDefaultMotionState {
 public:

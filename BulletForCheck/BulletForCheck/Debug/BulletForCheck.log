@@ -1,33 +1,22 @@
-﻿生成启动时间为 2018/5/31 21:05:55。
+﻿生成启动时间为 2018/6/19 20:48:58。
      1>项目“D:\USER\Desktop\BulletTest\BulletForCheck\BulletForCheck\BulletForCheck.vcxproj”在节点 2 上(Build 个目标)。
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"D:\USER\Desktop\bullet3-master\bullet3-master\src" /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0" /AI"C:\Program Files (x86)\Windows Kits\8.1\References\CommonConfiguration\Neutral" /Zi /clr /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _MBCS /EHa /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /TP /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\mscorlib.dll" /analyze- /errorReport:prompt /clr:nostdlib BasicDemo.cpp main.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"D:\USER\Desktop\bullet3-master\bullet3-master\src" /I"C:\Program Files (x86)\Visual Leak Detector\include" /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0" /AI"C:\Program Files (x86)\Windows Kits\8.1\References\CommonConfiguration\Neutral" /Zi /clr /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _MBCS /EHa /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /TP /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\mscorlib.dll" /analyze- /errorReport:prompt /clr:nostdlib BasicDemo.cpp
          BasicDemo.cpp
      1>d:\user\desktop\bullet3-master\bullet3-master\src\LinearMath/btIDebugDraw.h(169): warning C4305: “参数”: 从“double”到“const btScalar”截断
      1>d:\user\desktop\bullet3-master\bullet3-master\src\LinearMath/btIDebugDraw.h(170): warning C4305: “参数”: 从“double”到“const btScalar”截断
      1>d:\user\desktop\bullet3-master\bullet3-master\src\LinearMath/btIDebugDraw.h(171): warning C4305: “参数”: 从“double”到“const btScalar”截断
-         main.cpp
-     1>d:\user\desktop\bullet3-master\bullet3-master\src\LinearMath/btIDebugDraw.h(169): warning C4305: “参数”: 从“double”到“const btScalar”截断
-     1>d:\user\desktop\bullet3-master\bullet3-master\src\LinearMath/btIDebugDraw.h(170): warning C4305: “参数”: 从“double”到“const btScalar”截断
-     1>d:\user\desktop\bullet3-master\bullet3-master\src\LinearMath/btIDebugDraw.h(171): warning C4305: “参数”: 从“double”到“const btScalar”截断
-         正在生成代码...
-     1>d:\user\desktop\bullettest\bulletforcheck\bulletforcheck\main.cpp(11): warning C4793: “main”: 编译为本机的函数:
-         	托管代码中不支持对齐数据类型
-     1>D:\USER\Desktop\BulletTest\BulletForCheck\BulletForCheck\main.cpp : warning C4793: “BasicDemo::BasicDemo”: 编译为本机的函数:
-         	托管代码中不支持对齐数据类型
      1>d:\user\desktop\bullettest\bulletforcheck\bulletforcheck\basicdemo.cpp(33): warning C4793: “BasicDemo::CreateObjects”: 编译为本机的函数:
          	托管代码中不支持对齐数据类型
-     1>d:\user\desktop\bullettest\bulletforcheck\bulletforcheck\basicdemo.cpp(37): warning C4793: “BasicDemo::CreateObjects”: 编译为本机的函数:
+     1>d:\user\desktop\bullettest\bulletforcheck\bulletforcheck\basicdemo.cpp(36): warning C4793: “BasicDemo::CreateObjects”: 编译为本机的函数:
          	托管代码中不支持对齐数据类型
-     1>d:\user\desktop\bullettest\bulletforcheck\bulletforcheck\basicdemo.cpp(42): warning C4793: “BasicDemo::CreateObjects”: 编译为本机的函数:
-         	托管代码中不支持对齐数据类型
-     1>d:\user\desktop\bullettest\bulletforcheck\bulletforcheck\basicdemo.cpp(47): warning C4793: “BasicDemo::CreateObjects”: 编译为本机的函数:
-         	托管代码中不支持对齐数据类型
-     1>d:\user\desktop\bullettest\bulletforcheck\bulletforcheck\openglmotionstate.h(14): warning C4793: “OpenGLMotionState::OpenGLMotionState”: 编译为本机的函数:
+     1>d:\user\desktop\bullettest\bulletforcheck\bulletforcheck\basicdemo.cpp(39): warning C4793: “BasicDemo::CreateObjects”: 编译为本机的函数:
          	托管代码中不支持对齐数据类型
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\USER\Desktop\BulletTest\BulletForCheck\Debug\BulletForCheck.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\USER\Desktop\BulletTest\BulletForCheck\Debug\BulletForCheck.pdb" /ASSEMBLYDEBUG /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /FIXED:NO /NXCOMPAT /MACHINE:X86 Debug\BasicDemo.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\USER\Desktop\BulletTest\BulletForCheck\Debug\BulletForCheck.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Program Files (x86)\Visual Leak Detector\lib\Win32" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\USER\Desktop\BulletTest\BulletForCheck\Debug\BulletForCheck.pdb" /ASSEMBLYDEBUG /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /FIXED:NO /NXCOMPAT /MACHINE:X86 Debug\BasicDemo.obj
          Debug\BulletOpenGLApplication.obj
+         Debug\DebugDrawer.obj
+         Debug\GameObject.obj
          Debug\main.obj
          "Debug\.NETFramework,Version=v4.0.AssemblyAttributes.obj"
          D:\USER\Desktop\Bullet3\lib\Debug\BulletCollision_Debug.lib
@@ -38,4 +27,4 @@
 
 生成成功。
 
-已用时间 00:00:04.14
+已用时间 00:00:02.74
